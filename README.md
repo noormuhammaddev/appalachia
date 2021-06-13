@@ -51,5 +51,5 @@ appalachia -> assets -> dist -> css -> default.min.css
 
 
 ## General Information
-Bitter google fonts used by CDN.
-Did not work on responsiveness because the responsive design was not provided.
+- Bitter google fonts used by CDN.
+- Did not work on responsiveness because the responsive design was not provided.
