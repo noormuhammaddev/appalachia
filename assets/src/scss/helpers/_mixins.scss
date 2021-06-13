@@ -1,6 +1,10 @@
-/*fonts start*/
+// Functions
+// convert px to rem
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
 
-/*fonts end*/
 
 /*breakpoints start*/
 @mixin breakpoint($point) {
@@ -75,31 +79,29 @@
 }
 /*box-shadow end*/
 
-/*blur start*/
-@mixin blur($val) {
-  filter: blur($val);
-  -moz-filter: blur($val);
-  -webkit-filter: blur($val);
-}
-/*blur radius end*/
-
 @mixin rotate($val) {
   -ms-transform: rotate($val); /* IE 9 */
   -webkit-transform: rotate($val); /* Safari prior 9.0 */
   transform: rotate($val); /* Standard syntax */
 }
 
-@mixin placeholder {
-  input::-webkit-input-placeholder {
-    @content;
-  }
-  input::-moz-placeholder {
-    @content;
-  }
-  input::-moz-placeholder {
-    @content;
-  }
-  input::-ms-input-placeholder {
-    @content;
-  }
+// mixin - font size
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+// mixin - triangle
+@mixin triangle($borderSize, $topColor, $rightColor, $bottomColor, $leftColor) {
+  border: $borderSize solid transparent;
+  border-top-color: $topColor;
+  border-right-color: $rightColor;
+  border-bottom-color: $bottomColor;
+  border-left-color: $leftColor;
+}
+
+// mixin - shap
+@mixin shape($leftXaxis, $leftYaxis, $rightXaxis, $rightYaxis, $diagonalXaxis, $diagonalYaxis, $color) {
+  background-color: $color;
+  clip-path: polygon($leftXaxis $leftYaxis, $rightXaxis $rightYaxis, $diagonalXaxis $diagonalYaxis);
 }
